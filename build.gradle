@@ -1,0 +1,43 @@
+group 'com.tw.lane'
+version '1.0-SNAPSHOT'
+description 'this is a sample project for spring cloud'
+
+buildscript {
+    ext {
+        springBootVersion = '2.0.0.M2'
+    }
+    repositories {
+        mavenCentral()
+        maven { url "https://repo.spring.io/milestone" }
+        maven { url "https://repo.spring.io/snapshot" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: "java"
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.4'
+}
+
+allprojects {
+    task helloToAll << {
+        task -> println "I'm $task.project.name"
+    }
+}
+
+task greeting << {
+    println 'greetings'
+}
+
+task hello(dependsOn: [greeting]) << {
+    println 'say hello'
+    sourceSets.all {
+        item -> item.all {println name}
+    }
+}
+
+
+
