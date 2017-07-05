@@ -1,9 +1,9 @@
 ### A sample project for spring cloud
 ~~~
-Author: 
-Create Date: 
-
+Author: Lane Chen
+Create Date: 2017
 ~~~
 
 
-#### 
+#### sample-service
+It is a sample rest service.
