@@ -4,7 +4,7 @@ apply plugin: 'io.spring.dependency-management'
 
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
-targetCmopatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
 	mavenCentral()
@@ -13,6 +13,7 @@ repositories {
 }
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter')
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-actuator'
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
