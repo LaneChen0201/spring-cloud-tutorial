@@ -23,8 +23,10 @@ task wrapper(type: Wrapper) {
 }
 
 allprojects {
-    task helloToAll << {
-        task -> println "I'm $task.project.name"
+    task helloToAll {
+        doLast {
+            println "I'm $task.project.name"
+        }
     }
 }
 
