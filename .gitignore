@@ -1,6 +1,10 @@
 .gradle
+**/build/
+!gradle/wrapper/gradle-wrapper.jar
+
+### IntelliJ IDEA ###
 .idea
-.DS_Store
-target
-build
+*.iws
+*.iml
+*.ipr
 

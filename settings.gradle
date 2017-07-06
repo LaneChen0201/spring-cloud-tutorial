@@ -1,3 +1,3 @@
 rootProject.name = 'spring-cloud-sample'
 
-include 'sample-service'
+include 'sample-service', 'eureka-server'
