@@ -5,5 +5,8 @@ Create Date: 2017
 ~~~
 
 
-#### sample-service
-It is a sample rest service.
+- sample-service
+a sample service based on spring boot
+
+- eureka-service
+a sample service based on spring cloud Eureka
