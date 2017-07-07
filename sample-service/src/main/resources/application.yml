@@ -2,10 +2,15 @@ spring:
   application:
     name: sample-service
 
-#eureka:
-#  client:
-#    serviceUrl:
-#      defaultZone: http://localhost:10000/eureka/
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10000/eureka/
+    healthcheck:
+      enabled: true
+    instance:
+      lease-expiration-duration-in-seconds: 30
+      lease-renewal-interval-in-seconds: 10
 
 server:
   port: 8888
