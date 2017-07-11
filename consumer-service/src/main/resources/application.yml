@@ -1,6 +1,6 @@
 spring:
   application:
-    name: ribbon-consumer
+    name: consumer-service
 
 server:
   port: 10020

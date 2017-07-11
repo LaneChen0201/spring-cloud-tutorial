@@ -11,7 +11,7 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 jar {
-	baseName = 'ribbon-consumer'
+	baseName = 'consumer-service'
 	version = '0.0.1-SNAPSHOT'
 	enabled = true
 	manifest {
@@ -28,7 +28,9 @@ repositories {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.cloud:spring-cloud-starter-eureka')
-	compile('org.springframework.cloud:spring-cloud-starter-hystrix')
 	compile('org.springframework.cloud:spring-cloud-starter-ribbon')
+	compile('org.springframework.cloud:spring-cloud-starter-hystrix')
+	compile('org.springframework.cloud:spring-cloud-starter-feign')
+
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
