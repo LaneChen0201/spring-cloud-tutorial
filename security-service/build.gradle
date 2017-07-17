@@ -12,8 +12,9 @@ jar {
 }
 
 flyway {
-	url = 'jdbc:h2:file:~/test'
-	user = 'sa'
+	url = 'jdbc:h2:file:~/security-service'
+	user = 'security'
+	password = 'security'
 }
 
 sourceCompatibility = 1.8
@@ -32,4 +33,5 @@ dependencies {
 	testCompile("junit:junit")
 	testCompile("org.springframework.boot:spring-boot-starter-test")
 	testCompile("org.springframework.security:spring-security-test")
+	testCompile group: 'com.h2database', name: 'h2', version: '1.0.60'
 }
