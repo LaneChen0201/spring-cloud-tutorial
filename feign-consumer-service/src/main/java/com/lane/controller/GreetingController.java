@@ -12,7 +12,7 @@ public class GreetingController {
     @Autowired
     GreetingService greetingService;
 
-    @RequestMapping(value = "/feign-say-greeting", method = RequestMethod.GET)
+    @RequestMapping(value = "/feign-greeting", method = RequestMethod.GET)
     public String sayGreeting(@RequestParam(value="name", required=false) String name) {
         return greetingService.sayGreeting(name);
     }
