@@ -4,23 +4,26 @@ package com.lane.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "SYSTEM_USERS")
-public class User {
+@Table(name = "LOGIN_USER")
+public class SystemUser {
     @Id
-    private String userId;
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name = "USERID")
+    private int userId;
 
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @Column(name = "USERNAME")
     private String userName;
 
     private String password;
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 

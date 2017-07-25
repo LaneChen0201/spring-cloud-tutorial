@@ -12,9 +12,10 @@ jar {
 }
 
 flyway {
-	url = 'jdbc:h2:file:~/security-service'
+	url = 'jdbc:h2:file:~/Work/security-service'
 	user = 'security'
 	password = 'security'
+	schemas = ['PUBLIC']
 }
 
 sourceCompatibility = 1.8
