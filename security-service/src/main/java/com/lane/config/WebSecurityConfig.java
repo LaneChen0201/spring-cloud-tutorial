@@ -1,5 +1,6 @@
 package com.lane.config;
 
+import com.lane.filters.CsrfTokenResponseHeaderBindingFilter;
 import com.lane.security.AuthFailureHandler;
 import com.lane.security.AuthSuccessHandler;
 import com.lane.security.HttpAuthenticationEntryPoint;
@@ -16,12 +17,13 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import java.security.Policy;
 
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity(debug = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -51,28 +53,31 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.headers().frameOptions().disable();
-        http.csrf().disable();
+        http.csrf().ignoringAntMatchers("/h2/**");
         http.authorizeRequests()
-            .antMatchers("/", "/home", "/h2/**").permitAll()
-            .anyRequest().authenticated()
-            .and()
-            .authenticationProvider(authenticationProvider())
-            .exceptionHandling()
-            .authenticationEntryPoint(authenticationEntryPoint)
-            .and()
+                .antMatchers("/", "/home", "/h2/**", "/auto-login").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .authenticationProvider(authenticationProvider())
+                .exceptionHandling()
+                .authenticationEntryPoint(authenticationEntryPoint)
+                .and()
             .formLogin()
-//            .loginPage("/login")
-            .loginProcessingUrl("/login")
-            .usernameParameter("username")
-            .passwordParameter("password")
-            .successHandler(authSuccessHandler)
-            .failureHandler(authFailureHandler)
-            .permitAll()
-            .and()
+//              .loginPage("/login")
+                .loginProcessingUrl("/login")
+                .usernameParameter("username")
+                .passwordParameter("password")
+                .successHandler(authSuccessHandler)
+                .failureHandler(authFailureHandler)
+                .permitAll()
+                .and()
             .logout()
-            .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "POST"))
-            .logoutSuccessHandler(logoutSuccessHandler)
-            .permitAll();
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "POST"))
+                .logoutSuccessHandler(logoutSuccessHandler)
+                .permitAll();
+
+        // CSRF tokens handling
+        http.addFilterAfter(new CsrfTokenResponseHeaderBindingFilter(), CsrfFilter.class);
     }
 
     @Autowired

@@ -34,7 +34,7 @@ public class AuthFailureHandler extends SimpleUrlAuthenticationFailureHandler {
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 
         PrintWriter writer = response.getWriter();
-        mapper.writeValue(writer, new WrappedResponse("errorMsg", exception.getLocalizedMessage()));
+        mapper.writeValue(writer, new WrappedResponse("errorMsg", "Authentication Failed"));
 
         writer.flush();
     }
