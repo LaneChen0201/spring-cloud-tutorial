@@ -1,3 +1,5 @@
+apply plugin: 'idea'
+
 group 'com.tw.lane'
 version '1.0-SNAPSHOT'
 description 'this is a sample project for spring cloud'
