@@ -1,4 +1,4 @@
-rootProject.name = 'spring-cloud-samples'
+rootProject.name = 'spring-cloud-tutorial'
 
-include 'sample-service', 'eureka-server', 'consumer-service', 'feign-consumer-service', 'security-service'
+include 'sample-service', 'eureka-server', 'consumer-service', 'feign-consumer-service', 'security-service', 'security-oauth'
 
